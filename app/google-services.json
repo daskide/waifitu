@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "852372471692",
+    "project_id": "angelic-pipe-302209",
+    "storage_bucket": "angelic-pipe-302209.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852372471692:android:df1dff2afe78a66794e0a9",
+        "android_client_info": {
+          "package_name": "com.example.waifitu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852372471692-1ij5nubogqi6nin7i04aenmok6n5vgp6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.waifitu",
+            "certificate_hash": "5190c995648315067ccb7a9e0bd02c36ae8fe79f"
+          }
+        },
+        {
+          "client_id": "852372471692-g5uslbdhreedspma9v6np8pi583u69h2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAry3_VWOGbq-kmto_Phz-jvhRESQvMuAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852372471692-g5uslbdhreedspma9v6np8pi583u69h2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

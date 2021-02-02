@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:gravity="top"
+        android:background="@color/dialogDark"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_timer"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/label_intervals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="90dp"
+        android:textSize="25dp"
+        android:text="Intervals:"
+        android:textColor="#BBBBBB"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_intervals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="40dp"
+        android:textSize="25dp"
+        android:text="5"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@id/label_rest_time"
+        app:layout_constraintLeft_toRightOf="@id/label_intervals"
+        />
+    <TextView
+        android:id="@+id/label_rest_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="90dp"
+        android:textSize="25dp"
+        android:text="Rest Time:"
+        android:textColor="#BBBBBB"
+        app:layout_constraintTop_toTopOf="@id/label_intervals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_rest_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="40dp"
+        android:textSize="25dp"
+        android:text="15"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/label_intervals"
+        app:layout_constraintLeft_toRightOf="@id/label_intervals"
+        />
+    <TextView
+        android:id="@+id/label_train_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="90dp"
+        android:textSize="25dp"
+        android:text="Train Time:"
+        android:textColor="#BBBBBB"
+        app:layout_constraintTop_toTopOf="@id/label_rest_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/edit_train_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_marginLeft="40dp"
+        android:textSize="25dp"
+        android:text="45"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/label_rest_time"
+        app:layout_constraintLeft_toRightOf="@id/label_intervals"
+        />
+
+    <Button
+        android:id="@+id/start_btn"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="550dp"
+        android:textColor="#FFFFFF"
+        android:text="START"
+        android:textSize="35dp"
+        android:backgroundTint="#7447DF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

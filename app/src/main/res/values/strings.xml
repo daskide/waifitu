@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WaiFITu</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="label_workouts">Pushups</string>
+    <string name="label_timer">Timer</string>
+    <string name="label_walking">Trips</string>
+    <string name="label_steps">Steps today:</string>
+</resources>
