@@ -26,7 +26,6 @@ import org.w3c.dom.Text;
 
 public class WalkingFragment extends Fragment {
 
-    private Integer countedStep;
     private Integer detectedStep;
     private TextView steps;
 
@@ -42,8 +41,6 @@ public class WalkingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_walking, container, false);
-
-        //return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -61,11 +58,8 @@ public class WalkingFragment extends Fragment {
     };
 
     private void updateViews(Intent intent) {
-        countedStep = intent.getIntExtra("csteps", 0);
         detectedStep = intent.getIntExtra("dsteps", 0);
-        Log.d("test", String.valueOf(countedStep));
         Log.d("test", String.valueOf(detectedStep));
-
         steps.setText(String.valueOf(detectedStep));
     }
 }

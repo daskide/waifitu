@@ -21,14 +21,11 @@ import androidx.core.app.NotificationCompat;
 
 public class StepCountingService extends Service implements SensorEventListener {
     SensorManager sensorManager;
-    //Sensor stepCounterSensor;
     Sensor stepDetectorSensor;
     Sensor proximitySensor;
 
     int currentStepsDetected;
     int direction = -1;
-    int stepCounter;
-    int newStepCounter;
     int pushCounter;
 
     boolean serviceStopped;
@@ -39,10 +36,7 @@ public class StepCountingService extends Service implements SensorEventListener 
     public static final String BROADCAST_ACTION = ".StepCountingService";
 
     private final Handler handler = new Handler();
-    // counter number of times the service carried out updates.
-    int counter = 0;
 
-    // Service is being created
     @Override
     public void onCreate() {
         super.onCreate();
@@ -52,18 +46,12 @@ public class StepCountingService extends Service implements SensorEventListener 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        //stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         stepDetectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-        //sensorManager.registerListener(this, stepCounterSensor, 0);
         sensorManager.registerListener(this, stepDetectorSensor, 0);
         sensorManager.registerListener(this, proximitySensor, 0);
 
-        //currentStepCount = 0;
         currentStepsDetected = 0;
-
-        stepCounter = 0;
-        newStepCounter = 0;
 
         serviceStopped = false;
         handler.removeCallbacks(updateBroadcastData);
@@ -85,14 +73,6 @@ public class StepCountingService extends Service implements SensorEventListener 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            int countSteps = (int) event.values[0];
-
-            if (stepCounter == 0) {
-                stepCounter = (int) event.values[0];
-            }
-            newStepCounter = countSteps - stepCounter;
-        }
 
         if (event.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             int detectSteps = (int) event.values[0];
@@ -108,7 +88,6 @@ public class StepCountingService extends Service implements SensorEventListener 
             }
             else
                 direction = 1;
-            Log.e("push", Float.toString(pushCounter));
         }
 
 
@@ -118,12 +97,9 @@ public class StepCountingService extends Service implements SensorEventListener 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
 
-    //Update data by broadcasting
-    //Author: Paras Bansal
     private Runnable updateBroadcastData = new Runnable() {
         public void run() {
             if (!serviceStopped) {
-                // Broadcast data to the Activity
                 broadcastSensorValue();
                 sendNotification();
                 handler.postDelayed(this, 10000);
@@ -134,7 +110,6 @@ public class StepCountingService extends Service implements SensorEventListener 
     private void sendNotification() {
         Intent intent = new Intent(this, WalkingFragment.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
-        Log.e("test", "sent notification");
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         NotificationCompat.Builder notification_builder;
@@ -164,8 +139,6 @@ public class StepCountingService extends Service implements SensorEventListener 
     }
 
     private void broadcastSensorValue() {
-        Log.d(TAG, "Data to Activity");
-        intent.putExtra("csteps", newStepCounter);
         intent.putExtra("dsteps", currentStepsDetected);
         intent.putExtra("pushups", pushCounter);
         sendBroadcast(intent);

@@ -102,28 +102,31 @@ public class TimeRunningFragment extends Fragment {
                 tmode.setTextColor(0xFFB9F077);
                 ttime.setTextColor(0xFFB9F077);
                 tmode.setText(" REST TIME");
+                crest_time--;
                 String text = formatTime(crest_time);
                 ttime.setText(text);
-                crest_time--;
             }
             else if(crest_time > 0){
                 tmode.setText(" REST TIME");
                 crest_time--;
                 String text = formatTime(crest_time);
                 ttime.setText(text);
+
             }else {
                 mp.start();
                 tmode.setTextColor(0xFA9467FF);
                 ttime.setTextColor(0xFA9467FF);
                 tmode.setText("TRAIN TIME");
                 crest_time = rest_time;
-                ctrain_time = train_time--;
+                ctrain_time = train_time - 1;
                 cintervals--;
-                String text = formatTime(train_time);
+                String text = formatTime(ctrain_time);
                 ttime.setText(text);
             }
-            if (cintervals > 0)
+            if (cintervals > 0) {
+                tintervals.setText("ROUND " + (intervals - cintervals + 1) + "/" + intervals);
                 handler.postDelayed(this, 1000);
+            }
             else {
                 tmode.setText("GOOD JOB");
             }
